@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 名称空间 指定为接口的全类名
+    id 唯一标识
+    resultType 查出记录怎么办，封闭成什么对象
+     #{id} 从传过来的参数中取出 id-->
+<mapper namespace="com.dongfang.mybatis.ch0.dao.EmployeeMapper">
+    <select id="getEmpById" parameterType="java.lang.Integer" resultType="com.dongfang.mybatis.ch0.bean.Employee">
+    select id, last_name lastName, gender, email from t_employee where id = #{id}
+  </select>
+</mapper>
