@@ -2,6 +2,7 @@ package com.dongfang.mybatis.ch0;
 
 import com.dongfang.mybatis.ch0.bean.Employee;
 import com.dongfang.mybatis.ch0.dao.EmployeeMapper;
+import com.dongfang.mybatis.ch0.dao.EmployeeMapperAnnotation;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -58,8 +59,16 @@ public class HelloMyBatis {
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
         // MyBatis会为接口自动地创建一个代理对象，代理对象去执行CRUD
         System.out.println("employeeMapper.getClass() = " + employeeMapper.getClass());
-        System.out.println("employeeMapper.getEmpById(1) = " + employeeMapper.getEmpById(1));
+        System.out.println("employeeMapper.getEmpById(2) = " + employeeMapper.getEmpById(2));
 
+    }
+
+    @Test
+    public void testAnnotationMapper() throws IOException {
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        EmployeeMapperAnnotation employeeMapperAnnotation = sqlSession.getMapper(EmployeeMapperAnnotation.class);
+        System.out.println("employeeMapperAnnotation.getEmpById(1) = " + employeeMapperAnnotation.getEmpById(1));
     }
 
 

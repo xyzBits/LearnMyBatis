@@ -1,5 +1,8 @@
 package com.dongfang.mybatis.ch0.bean;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("empp")
 public class Employee {
     private Integer id;
     private String lastName;
