@@ -9,10 +9,44 @@
         where id = #{idddd}
     </select>
 
+    <!--
+    where id = ${id} and last_name = #{lastName}
+    Preparing: select id, last_name lastName, gender, email from t_employee where id = 6 and last_name = ?
+    -->
+    <select id="getEmpByIdAndLastName" resultType="com.dongfang.mybatis.bean.Employee">
+        select id, last_name lastName, gender, email
+        from t_employee
+        where id = ${id} and last_name = #{lastName}
+    </select>
+
+    <select id="getEmpByMap" resultType="com.dongfang.mybatis.bean.Employee">
+        select id, last_name lastName, gender, email
+        from t_employee
+        where id = #{id} and last_name = #{lastName}
+    </select>
+
+    <select id="getEmpByIdAntOtherEmp" resultType="com.dongfang.mybatis.bean.Employee">
+        select id, last_name lastName, gender, email
+        from t_employee
+        where id = #{id} and last_name = #{employee.lastName}
+    </select>
+
+    <select id="getEmpByIds" resultType="com.dongfang.mybatis.bean.Employee">
+        select id, last_name lastName, gender, email
+        from t_employee
+        where id = #{list[0]}
+    </select>
+
+    <select id="getEmpByTableAndId" resultType="com.dongfang.mybatis.bean.Employee">
+        select id, last_name lastName, gender, email
+        from ${tableName}
+        where id = #{id}
+    </select>
+
     <insert id="addEmp" parameterType="com.dongfang.mybatis.bean.Employee"
             useGeneratedKeys="true" keyProperty="id">
         insert into t_employee (last_name, email, gender)
-        values (#{lastName}, #{email}, #{gender})
+        values (#{lastName}, #{email, jdbcType=NULL}, #{gender})
     </insert>
 
     <update id="updateEmp">

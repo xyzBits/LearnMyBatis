@@ -27,7 +27,9 @@ from t_employee;
     <!--employee 默认的别名-
         emp指定的别名-->
 
-    <!--select id="getEmpById" parameterType="java.lang.Integer" resultType="employee"-->
+    <!--select id="getEmpById" parameterType="java.lang.Integer" resultType="employee"
+    parameterType SELECT中可以不写，mybatis会根据typeHandler自动推断
+    -->
     <select id="getEmpById" parameterType="java.lang.Integer" resultType="com.dongfang.mybatis.bean.Employee" databaseId="mysql">
         select id, last_name lastName, gender, email from t_employee where id = #{id}
     </select>

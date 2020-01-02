@@ -21,6 +21,7 @@
     -->
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
     </settings>
 
     <!--
@@ -110,6 +111,7 @@
         <mapper resource="Mybatis/mapper/EmployeeMapper.xml"/>
         <mapper resource="Mybatis/mapper/EmployeeCrudMapper.xml"/>
         <mapper resource="Mybatis/mapper/SelectParamMapper.xml"/>
+        <mapper resource="Mybatis/mapper/SelectEmployeeMapper.xml"/>
         <mapper class="com.dongfang.mybatis.dao.EmployeeMapperAnnotation"/>
 
         <!--package 批量注册 name 包名-->
