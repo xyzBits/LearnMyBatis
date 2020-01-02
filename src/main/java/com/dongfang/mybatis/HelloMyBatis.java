@@ -1,8 +1,8 @@
-package com.dongfang.mybatis.ch0;
+package com.dongfang.mybatis;
 
-import com.dongfang.mybatis.ch0.bean.Employee;
-import com.dongfang.mybatis.ch0.dao.EmployeeMapper;
-import com.dongfang.mybatis.ch0.dao.EmployeeMapperAnnotation;
+import com.dongfang.mybatis.bean.Employee;
+import com.dongfang.mybatis.dao.EmployeeMapper;
+import com.dongfang.mybatis.dao.EmployeeMapperAnnotation;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

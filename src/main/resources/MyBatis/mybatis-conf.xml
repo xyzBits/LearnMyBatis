@@ -32,7 +32,7 @@
             type:指定要起别名的类型的全类名
             什么都不写，默认就是类名小写employee
             alias：指定新的别名-->
-        <!--<typeAlias type="com.dongfang.mybatis.ch0.bean.Employee" alias="emp"/>-->
+        <!--<typeAlias type="Employee" alias="emp"/>-->
 
         <!--
                 package:为某个包下的所有类型批量起别名
@@ -109,7 +109,8 @@
         -->
         <mapper resource="Mybatis/mapper/EmployeeMapper.xml"/>
         <mapper resource="Mybatis/mapper/EmployeeCrudMapper.xml"/>
-        <mapper class="com.dongfang.mybatis.ch0.dao.EmployeeMapperAnnotation"/>
+        <mapper resource="Mybatis/mapper/SelectParamMapper.xml"/>
+        <mapper class="com.dongfang.mybatis.dao.EmployeeMapperAnnotation"/>
 
         <!--package 批量注册 name 包名-->
         <!--<package name=""/>-->

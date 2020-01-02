@@ -1,6 +1,6 @@
-package com.dongfang.mybatis.ch0.dao;
+package com.dongfang.mybatis.dao;
 
-import com.dongfang.mybatis.ch0.bean.Employee;
+import com.dongfang.mybatis.bean.Employee;
 
 public interface EmployeeMapper {
     /**

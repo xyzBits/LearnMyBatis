@@ -2,21 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dongfang.mybatis.dao.EmployeeCrudMapper">
-
-
+<mapper namespace="com.dongfang.mybatis.dao.SelectParamMapper">
     <select id="getEmpById" parameterType="java.lang.Integer" resultType="com.dongfang.mybatis.bean.Employee">
         select id, last_name lastName, gender, email
         from t_employee
-        where id = #{id}
+        where id = #{idddd}
     </select>
 
-    <!--parameterType可以省略
-        mysql支持自增主键，自增主键的获取，mybatis也是利用statement.getGeneratedKeys()
-        useGeneratedKeys="true" 使用自增主键获取主键值策略
-        keyProperty 指定对应的主键属性，也就是mybatis获取到主键后，
-        将这个值封装给java bean的哪个属性
-    -->
     <insert id="addEmp" parameterType="com.dongfang.mybatis.bean.Employee"
             useGeneratedKeys="true" keyProperty="id">
         insert into t_employee (last_name, email, gender)
