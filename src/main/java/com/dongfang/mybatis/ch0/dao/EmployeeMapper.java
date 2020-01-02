@@ -19,4 +19,10 @@ public interface EmployeeMapper {
      * @return
      */
     Employee getEmpById(Integer id);
+
+    void addEmp(Employee emp);
+
+    void updateEmp(Employee emp);
+
+    void deleteEmpById(Integer id);
 }

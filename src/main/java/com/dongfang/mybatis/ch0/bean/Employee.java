@@ -2,7 +2,7 @@ package com.dongfang.mybatis.ch0.bean;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("empp")
+//@Alias("empp")
 public class Employee {
     private Integer id;
     private String lastName;
@@ -10,6 +10,12 @@ public class Employee {
     private String gender;
 
     public Employee() {
+    }
+
+    public Employee(String lastName, String email, String gender) {
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
     }
 
     public Integer getId() {

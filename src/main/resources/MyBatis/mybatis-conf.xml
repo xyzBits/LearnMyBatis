@@ -108,6 +108,7 @@
                         不重要的，简单的Dao接口，为了快速开发可以使用注解
         -->
         <mapper resource="Mybatis/mapper/EmployeeMapper.xml"/>
+        <mapper resource="Mybatis/mapper/EmployeeCrudMapper.xml"/>
         <mapper class="com.dongfang.mybatis.ch0.dao.EmployeeMapperAnnotation"/>
 
         <!--package 批量注册 name 包名-->
