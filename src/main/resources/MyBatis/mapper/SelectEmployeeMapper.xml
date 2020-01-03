@@ -8,4 +8,12 @@
         select * from t_employee
         where last_name like #{lastName}
     </select>
+
+    <select id="getEmpMapById" resultType="java.util.Map">
+        select * from t_employee where id = #{id}
+    </select>
+
+    <select id="getAllEmpByLastNameLike" resultType="java.util.Map">
+        select * from t_employee where last_name like #{lastName}
+    </select>
 </mapper>

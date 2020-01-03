@@ -1,20 +1,18 @@
 package com.dongfang.mybatis;
 
 import com.dongfang.mybatis.bean.Employee;
-import com.dongfang.mybatis.dao.SelectEmployeeMapper;
-import com.dongfang.mybatis.dao.SelectParamMapper;
+import com.dongfang.mybatis.dao.ResultAutoMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
+import javax.swing.plaf.SliderUI;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
 
-public class MyBatisSelect {
+public class MyBatisAutoMap {
     public SqlSessionFactory getSqlSessionFactory() throws IOException {
         String resource = "MyBatis/mybatis-conf.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -22,32 +20,32 @@ public class MyBatisSelect {
     }
 
     @Test
-    public void testSelectList() throws IOException {
+    public void testResultMap() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            SelectEmployeeMapper mapper = sqlSession.getMapper(SelectEmployeeMapper.class);
-            List<Employee> employees = mapper.getEmpsByLastNameLike("Jerry");
-            System.out.println("employees = " + employees);
+            ResultAutoMapper mapper = sqlSession.getMapper(ResultAutoMapper.class);
+            Employee employee = mapper.getEmpById(1);
+            System.out.println("employee = " + employee);
         }
     }
 
     @Test
-    public void testSelectMap() throws IOException {
+    public void testJoinSelect() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            SelectEmployeeMapper mapper = sqlSession.getMapper(SelectEmployeeMapper.class);
-            Map<String, Object> empMap = mapper.getEmpMapById(1);
-            System.out.println("empMap = " + empMap);
+            ResultAutoMapper mapper = sqlSession.getMapper(ResultAutoMapper.class);
+            Employee employee = mapper.getEmpAndDeptById(1);
+            System.out.println("employee = " + employee);
         }
     }
 
     @Test
-    public void testSelectMapSetKey() throws IOException {
+    public void testAssociationSelect() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            SelectEmployeeMapper mapper = sqlSession.getMapper(SelectEmployeeMapper.class);
-            Map<Integer, Employee> empMap = mapper.getAllEmpByLastNameLike("Jerry");
-            System.out.println("empMap = " + empMap);
+            ResultAutoMapper mapper = sqlSession.getMapper(ResultAutoMapper.class);
+            Employee employee = mapper.getEmpAndDeptByAssociation(1);
+            System.out.println("employee = " + employee);
         }
     }
 }

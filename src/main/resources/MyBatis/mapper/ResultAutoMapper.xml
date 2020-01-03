@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongfang.mybatis.dao.ResultAutoMapper">
+
+    <!--
+        自定义某个java bean的封装规则
+        type: 自定义规则的java类型
+        id: 唯一id方便引用
+    -->
+    <resultMap id="employee" type="com.dongfang.mybatis.bean.Employee">
+        <!--
+            指定主键列的封装规则
+            id定义主键，mybatis底层会有优化
+            column 指定数据表中的哪一列
+            property 指定对应的java bean的属性
+        -->
+        <id column="id" property="id"/>
+
+        <!--result: 定义普通列的封装规则-->
+        <result column="last_name" property="lastName"/>
+        <!--其他不指定的列会自动封装，可以不写，只要写resultMap就把全部的映射规则全部写上-->
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+    </resultMap>
+
+    <select id="getEmpById" resultMap="employee">
+        select * from t_employee where id = #{id};
+    </select>
+
+    <!--id last_name gender td_id did dept_name
+        联合查询，级联属性封装结果集-->
+    <resultMap id="employee_dept" type="com.dongfang.mybatis.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="gender" property="gender"/>
+        <result column="did" property="department.id"/>
+        <result column="dept_name" property="department.departmentName"/>
+    </resultMap>
+    <select id="getEmpAndDeptById" resultMap="employee_dept">
+        select te.id id, te.last_name last_name, te.gender gender, te.dept_id td_id,
+               td.id did, td.department_name dept_name
+        from t_employee te, t_department td
+        where te.id = td.id and te.id = #{id};
+    </select>
+
+    <resultMap id="employee_dept_associate" type="com.dongfang.mybatis.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="gender" property="gender"/>
+        <!--association可以指定联合的javaBean对象，定义单个对象的封装规则
+            property = "dept"指定哪个属性是联合的对象
+            javaType 指定这个属性对象的类型【不能省略】-->
+        <association property="department" javaType="com.dongfang.mybatis.bean.Department">
+            <id column="did" property="id"/>
+            <result column="dept_name" property="departmentName"/>
+        </association>
+    </resultMap>
+    <select id="getEmpAndDeptByAssociation" resultMap="employee_dept_associate">
+        select te.id id, te.last_name last_name, te.gender gender, te.dept_id td_id,
+               td.id did, td.department_name dept_name
+        from t_employee te, t_department td
+        where te.id = td.id and te.id = #{id};
+    </select>
+</mapper>
