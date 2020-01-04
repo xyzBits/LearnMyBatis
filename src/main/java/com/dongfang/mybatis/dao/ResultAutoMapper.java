@@ -19,4 +19,6 @@ public interface ResultAutoMapper {
     Employee getEmpAndDeptById(@Param("id") Integer id);
 
     Employee getEmpAndDeptByAssociation(@Param("id") Integer id);
+
+    Employee getEmpStepByStep(@Param("id") Integer id);
 }

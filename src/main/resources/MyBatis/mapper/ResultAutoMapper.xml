@@ -63,4 +63,38 @@
         from t_employee te, t_department td
         where te.id = td.id and te.id = #{id};
     </select>
+
+
+    <!--使用association进行分步查询
+        1、先按照员工id查询员工信息
+        2、根据员工信息中的d_id值去查出部门信息
+        3、将查出的部门设置到员工信息中-->
+    <resultMap id="empByStep" type="com.dongfang.mybatis.bean.Employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <!--association定义关联对象的封装规则
+            select:表明当前属性是调用select指定的方法查出结果
+            column:指定将哪一列的值传给select方法
+            流程：使用select指定的方法，传入column指定的这列参数的值，查出对象
+                并封装给property指定的属性
+            -->
+        <association property="department" select="com.dongfang.mybatis.dao.DepartmentMapper.getDeptById"
+                     column="dept_id"/>
+    </resultMap>
+    <select id="getEmpStepByStep" resultMap="empByStep">
+        select * from t_employee where id = #{id}
+    </select>
+
+    <!--
+        我们可以使用延迟加载：
+            Employee===> Department:
+                我们每次查询Employee对象的时候，都将一起查询出来，
+                部门信息在我们使用的时候再去查询
+                分段查询的基础上再加上两个配置
+    -->
+
+
+
 </mapper>
