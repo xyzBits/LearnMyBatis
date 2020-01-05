@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
-import javax.swing.plaf.SliderUI;
 import java.io.IOException;
 import java.io.InputStream;
 

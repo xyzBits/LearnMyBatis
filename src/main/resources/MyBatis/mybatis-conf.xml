@@ -117,6 +117,7 @@
         <mapper resource="Mybatis/mapper/SelectEmployeeMapper.xml"/>
         <mapper resource="Mybatis/mapper/ResultAutoMapper.xml"/>
         <mapper resource="Mybatis/mapper/DepartmentMapper.xml"/>
+        <mapper resource="Mybatis/mapper/DynamicSqlMapper.xml"/>
         <mapper class="com.dongfang.mybatis.dao.EmployeeMapperAnnotation"/>
 
         <!--package 批量注册 name 包名-->

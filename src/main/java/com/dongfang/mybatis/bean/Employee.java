@@ -11,8 +11,7 @@ public class Employee {
 
     private Integer deptId;
 
-    public Employee() {
-    }
+    private Department dept;
 
     @Override
     public String toString() {
@@ -27,8 +26,21 @@ public class Employee {
                 .append(gender).append('\"');
         sb.append(",\"deptId\":")
                 .append(deptId);
+        sb.append(",\"dept\":")
+                .append(dept);
         sb.append('}');
         return sb.toString();
+    }
+
+    public Department getDept() {
+        return dept;
+    }
+
+    public void setDept(Department dept) {
+        this.dept = dept;
+    }
+
+    public Employee() {
     }
 
     public Integer getDeptId() {
@@ -54,6 +66,12 @@ public class Employee {
         this.gender = gender;
     }
 
+    public Employee(String lastName, String email, String gender, Integer deptId) {
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.deptId = deptId;
+    }
 
     public Integer getId() {
         return id;

@@ -115,7 +115,7 @@
         <result column="last_name" property="lastName"/>
         <result column="email" property="email"/>
         <result column="gender" property="gender"/>
-        
+
     </resultMap>
 
 
