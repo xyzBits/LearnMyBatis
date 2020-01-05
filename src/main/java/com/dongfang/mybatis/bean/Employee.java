@@ -9,7 +9,7 @@ public class Employee {
     private String email;
     private String gender;
 
-    private Department department;
+    private Integer deptId;
 
     public Employee() {
     }
@@ -25,18 +25,26 @@ public class Employee {
                 .append(email).append('\"');
         sb.append(",\"gender\":\"")
                 .append(gender).append('\"');
-        sb.append(",\"department\":")
-                .append(department);
+        sb.append(",\"deptId\":")
+                .append(deptId);
         sb.append('}');
         return sb.toString();
     }
 
-    public Employee(Integer id, String lastName, String email, String gender, Department department) {
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public Employee(Integer id, String lastName, String email, String gender, Integer deptId) {
         this.id = id;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
-        this.department = department;
+        this.deptId = deptId;
     }
 
     public Employee(Integer id, String lastName, String email, String gender) {
@@ -46,13 +54,6 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 
     public Integer getId() {
         return id;

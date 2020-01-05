@@ -3,6 +3,8 @@ package com.dongfang.mybatis.dao;
 import com.dongfang.mybatis.bean.Employee;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * 自动映射：
  *      1、全局setting设置
@@ -21,4 +23,6 @@ public interface ResultAutoMapper {
     Employee getEmpAndDeptByAssociation(@Param("id") Integer id);
 
     Employee getEmpStepByStep(@Param("id") Integer id);
+
+    List<Employee> getAllEmpByDeptId(@Param("deptId") Integer deptId);
 }
