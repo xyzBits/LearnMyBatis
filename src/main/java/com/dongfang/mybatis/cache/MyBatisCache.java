@@ -54,6 +54,13 @@ import java.io.InputStream;
  *
  *                                 使用缓存的顺序，先去二级，再去一级，再去数据库
  *
+ *
+ *                 3、第三方缓存整合：
+ *                          1）、导入第三方缓存包即可
+ *                          2）、导入与第三方缓存整合的适配包，官方有
+ *                          3）、mapper.xml中自定义缓存
+ *                              <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+ *
  */
 public class MyBatisCache {
     public SqlSessionFactory getSqlSessionFactory() throws IOException {

@@ -13,7 +13,8 @@
         type:指定自定义缓存的全类名
                 实现Cache接口即可
     -->
-    <cache eviction="FIFO" flushInterval="6000" readOnly="false" size="1024"></cache>
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+<!--    <cache eviction="FIFO" flushInterval="6000" readOnly="false" size="1024"></cache>-->
     <!--
         自定义某个java bean的封装规则
         type: 自定义规则的java类型
