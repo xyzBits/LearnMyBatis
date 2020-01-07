@@ -15,7 +15,7 @@ import java.io.InputStream;
 /**
  * 两级缓存：
  *      一级缓存：（本地缓存） sqlSession级别的缓存，一级缓存是一直开启的，新的session有新的缓存 ，不能共用
- *              sqlSession级别的一个Map
+ *              sqlSession级别的一个Map key:hashCode+查询的SqlId+编写的sql查询语句+参数
  *              与数据库同一次会话期间查询到的数据会存放在本地缓存中
  *              以后如果需要获取相同的数据，直接从缓存中拿，没必要再去查询数据库
  *
