@@ -36,7 +36,7 @@
     -->
 
     <!--创建出SqlSessionFactory对象-->
-    <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--configLocation指定全局配置文件的位置-->
         <property name="configLocation" value="classpath:conf/mybatis/mybatis-conf.xml"/>
